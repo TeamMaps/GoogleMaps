@@ -1,0 +1,59 @@
+#map {
+       height:400px;
+       width:45%;
+       float: left;
+       }
+header {
+    text-align: center;
+    background-image: url(https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAgFAAAAJDM2NDhmZjc3LTJiZjctNDUzMi04ZmU4LTM5YzNhMjIwMmI2MQ.jpg);
+    height:70px;
+    padding-top: 30px;
+    color:antiquewhite;
+}
+
+body {
+    margin:0px;
+}
+
+.navel {
+    padding-left: 7%;
+    padding-right: 7%;
+    border:white solid;
+    color:aqua;
+}
+
+nav {
+    padding-left: 8%;
+    z-index: 2;
+    background-color: black;
+    padding-top: 10px;
+    height:30px;
+}
+
+#markeri {
+    width:5%;
+    height:400px;
+    float:left;
+    background-color: gray;
+}
+
+
+
+#feed {
+    float:left;
+    width:50%;
+    height:400px;
+    background-color: gray;
+}
+
+#ayy {
+    display: inline-block;
+    width:100%;
+}
+
+#black {
+    background-color: black;
+    height: 50px;
+    position:relative;
+    bottom: 5px;
+}
