@@ -4,7 +4,7 @@
    <link href="style.css" rel="stylesheet">
     <title>Team Maps</title>
   </head>
-  <body>
+  <body onload="ucitajPodatke()">
       <header><h1>Team Maps</h1></header>
     <nav>
         <a href="#1" class="navel">Home</a>
@@ -19,17 +19,16 @@
     <div id="feed"></div>
       </div>
     <div id ="black"></div>
+    <button onclick="spremiPodatke()">Spremi markere</button>
+   
+      
+      
+
+
       
       
       
-      
-      
-      
-      
-      
-      
-      
-      <script src="googleAPI.js"></script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjP0mIv4XxH3DQo42HExq-IKmY0gjjyq4&callback=initMap"> </script>
+      <script src="googleAPI.js"></script>
   </body>
 </html>
