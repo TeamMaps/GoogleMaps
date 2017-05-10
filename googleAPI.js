@@ -16,8 +16,16 @@ function initMap() {
 
 // funkcija koja dodaje marker
 function placeMarker(latLng, map) {
+    
   var marker = new google.maps.Marker({
     position: latLng,
-    map: map
+    map: map,
+    content: "ayyy"
+  });
+    marker.addListener("click", function(){
+    var infowindow = new google.maps.InfoWindow();
+    infowindow.setContent(this.content);
+    infowindow.open(map, this);
   });
 }
+
