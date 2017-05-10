@@ -13,12 +13,12 @@ function initMap() {
         });
      //listener je property mape
      map.addListener('click', function(e) {
-    placeMarker(e.latLng, map);
+    placeMarker(e.latLng, map,1);
   });
 }
 
 // funkcija koja dodaje marker
-function placeMarker(latLng, map) {
+function placeMarker(latLng, map, mode) {
     
   var marker = new google.maps.Marker({
     position: latLng,
@@ -30,21 +30,14 @@ function placeMarker(latLng, map) {
     infowindow.setContent(this.content);
     infowindow.open(map, this);
   });
+    if(mode){
     markers.push(latLng)
+    }
 }
 
 function ucitajPodatke(){
     for(var i = 0; i < markers.length ; i++){
-    var marker = new google.maps.Marker({
-    position: markers[i],
-    map: map,
-    content: "ayyy"
-    });
-    marker.addListener("click", function(){
-    var infowindow = new google.maps.InfoWindow();
-    infowindow.setContent(this.content);
-    infowindow.open(map, this);
-    });
+        placeMarker(markers[i], map,0)
     }
 }
 
