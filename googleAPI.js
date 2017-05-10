@@ -13,17 +13,21 @@ function initMap() {
         });
      //listener je property mape
      map.addListener('click', function(e) {
-    placeMarker(e.latLng, map,1);
+    placeMarker(e.latLng, map, 1);
   });
 }
 
+function getContent(){
+   return prompt("Upisi info");
+}
 // funkcija koja dodaje marker
 function placeMarker(latLng, map, mode) {
-    
+    if(mode) var input = getContent();
+    else input = "ayy"
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    content: "ayyy"
+    content: input
   });
     marker.addListener("click", function(){
     var infowindow = new google.maps.InfoWindow();
@@ -37,7 +41,7 @@ function placeMarker(latLng, map, mode) {
 
 function ucitajPodatke(){
     for(var i = 0; i < markers.length ; i++){
-        placeMarker(markers[i], map,0)
+        placeMarker(markers[i], map, 0)
     }
 }
 
