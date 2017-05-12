@@ -1,5 +1,4 @@
-var markers = JSON.parse(localStorage.getItem("markers"));
-
+var markers = JSON.parse(localStorage.getItem("markers")); // pretrazuje local storage za oznaku markers i taj value parsa u ovaj var
 
 function initMap() {
         var uluru = {lat: 45.3430556, lng: 14.4091667};
@@ -12,39 +11,48 @@ function initMap() {
           map: map
         });
      //listener je property mape
-     map.addListener('click', function(e) {
-    placeMarker(e.latLng, map, 1);
-  });
-}
+        map.addListener('click', function(e) {
+        placeMarker(e.latLng, map);
+        });
+}                                 // stvara globalnu varijablu mapa s centrom u Rijeci(default)
 
 function getContent(){
    return prompt("Upisi info");
-}
-// funkcija koja dodaje marker
-function placeMarker(latLng, map, mode) {
-    if(mode) var input = getContent();
-    else input = "ayy"
+}                               // funkcija koja se poziva kad korisnik klikne na mapu, izbacuje bootstrap modal(not yet) i skuplja user input
+
+function placeMarker(latLng, map) {
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    content: input
+    content: "ayy"
   });
     marker.addListener("click", function(){
     var infowindow = new google.maps.InfoWindow();
     infowindow.setContent(this.content);
     infowindow.open(map, this);
   });
-    if(mode){
     markers.push(latLng)
-    }
-}
+} // funkcija vezana za event listener mape, poziva getContent pravi marker i pusha latLng i content u markers
+
+function markerReviver(latLng, map){
+    var marker = new google.maps.Marker({
+        position:latLng,
+        map:map,
+        content: "ayy"
+    });
+    marker.addListener("click", function(){
+        var infowindow = new google.maps.InfoWindow();
+        infowindow.setContent(this.content);
+        infowindow.open(map,this);
+    });
+} // kad se ucita stranica stavlja markere iz local storagea na mapu
 
 function ucitajPodatke(){
     for(var i = 0; i < markers.length ; i++){
-        placeMarker(markers[i], map, 0)
+        markerReviver(markers[i], map)
     }
-}
+} // body onload funkcija koja poziva markerReviver na svaki element markers arraya
 
 function spremiPodatke(){
     localStorage.setItem("markers", JSON.stringify(markers));
-}
+} // button onclick triggered sprema trenutni markers u local storage
