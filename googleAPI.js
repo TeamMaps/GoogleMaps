@@ -1,4 +1,6 @@
-var markers = JSON.parse(localStorage.getItem("markers")); // pretrazuje local storage za oznaku markers i taj value parsa u ovaj var
+if(localStorage.markers === undefined){ markers = []; }
+else markers = JSON.parse(localStorage.getItem("markers"));
+// pretrazuje local storage za oznaku markers i taj value parsa u ovaj var, akmo je nema stvara prazni globalni array markers
 
 function initMap() {
         var uluru = {lat: 45.3430556, lng: 14.4091667};
